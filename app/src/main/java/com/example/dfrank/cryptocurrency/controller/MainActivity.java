@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         TabLayout tabLayout = findViewById(R.id.tab);
         ViewPager viewPager = findViewById(R.id.viewPager);
-//        android.support.v7.widget.Toolbar toolbar =findViewById(R.id.toolbar);
-//        toolbar.setTitle(R.string.app_name);
+        android.support.v7.widget.Toolbar toolbar =findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.app_name);
         prepareData();
         FraAdapter nAdapter = new FraAdapter(getSupportFragmentManager(), fragments, texts);
        viewPager.setAdapter(nAdapter);
