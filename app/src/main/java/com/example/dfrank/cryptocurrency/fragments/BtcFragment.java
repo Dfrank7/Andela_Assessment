@@ -44,6 +44,19 @@ public class BtcFragment extends android.support.v4.app.Fragment {
         View view = inflater.inflate(R.layout.btc, container, false);
         recyclerView = view.findViewById(R.id.recycler_btc);
         refreshLayout = view.findViewById(R.id.swipe);
+        initView();
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+                recyclerView.smoothScrollToPosition(0);
+                Extras();
+            }
+        });
+        return view;
+
+    }
+    private void initView(){
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Fetching Data");
         progressDialog.setCancelable(false);
@@ -51,8 +64,6 @@ public class BtcFragment extends android.support.v4.app.Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(context, 2));
         recyclerView.smoothScrollToPosition(0);
         Extras();
-        return view;
-
     }
     private void Extras(){
         Client client = new Client();
@@ -89,21 +100,21 @@ public class BtcFragment extends android.support.v4.app.Fragment {
 
                 }
                 progressDialog.dismiss();
-                // Toast.makeText(getApplicationContext(), "Connection Successful", Toast.LENGTH_SHORT).show();
 
             }
 
             @Override
             public void onFailure(Call<BTC> call, Throwable t) {
                 progressDialog.dismiss();
-                 refreshLayout.setVisibility(View.GONE);
+                refreshLayout.setRefreshing(false);
+
                  Log.e("response","Unsuccessful");
-//                Toast.makeText(context,"No/poor Internet Access", Toast.LENGTH_SHORT).show();
-                Snackbar snackbar = Snackbar.make(getActivity().findViewById(R.id.LinearLayout), "Poor/No Internet", Snackbar.LENGTH_INDEFINITE)
+                Toast.makeText(getContext(),"No/poor Internet Access, Please Refresh" , Toast.LENGTH_SHORT).show();
+                Snackbar snackbar = Snackbar.make(getView().findViewById(R.id.LinearLayout), "Poor/No Internet", Snackbar.LENGTH_INDEFINITE)
                         .setAction("Refresh", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Extras();
+                                initView();
                             }
                         }); snackbar.show();
 

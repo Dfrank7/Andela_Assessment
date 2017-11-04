@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.dfrank.cryptocurrency.R;
 import com.example.dfrank.cryptocurrency.adapter.BtcAdapter;
@@ -44,6 +45,19 @@ public class EthFragment extends Fragment {
         View view = inflater.inflate(R.layout.eth, container, false);
         recyclerView = view.findViewById(R.id.recycler_eth);
         refreshLayout = view.findViewById(R.id.swipe);
+        initView();
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+                recyclerView.smoothScrollToPosition(0);
+                GetEth();
+            }
+        });
+        return view;
+
+    }
+    private void initView(){
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Fetching Data");
         progressDialog.setCancelable(false);
@@ -51,8 +65,6 @@ public class EthFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(context, 2));
         recyclerView.smoothScrollToPosition(0);
         GetEth();
-        return view;
-
     }
     private void GetEth(){
         Client client = new Client();
@@ -85,21 +97,23 @@ public class EthFragment extends Fragment {
                 names.add(new BTC("Congo", "XAF",response.body().getXAF()));
                 BtcAdapter adapter = new BtcAdapter(context, names);
                 recyclerView.setAdapter(adapter);
+                if (refreshLayout.isRefreshing()){
+                    refreshLayout.setRefreshing(false);
+                }
             }
 
             @Override
             public void onFailure(Call<BTC> call, Throwable t) {
                 progressDialog.dismiss();
-                refreshLayout.setVisibility(View.GONE);
+                refreshLayout.setRefreshing(false);
                 Log.e("Ethresponse","Unsuccessful");
-//                Toast.makeText(context,"No/poor Internet Access", Toast.LENGTH_SHORT).show();
-//                Snackbar snackbar = Snackbar.make(getActivity().findViewById(R.id.LinearLayout), "Poor/No Internet", Snackbar.LENGTH_INDEFINITE)
-//                        .setAction("Refresh", new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View v) {
-//                                GetEth();
-//                            }
-//                        }); snackbar.show();
+                Snackbar snackbar = Snackbar.make(getView().findViewById(R.id.LinearLayout), "Poor/No Internet", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Refresh", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                initView();
+                            }
+                        }); snackbar.show();
 
             }
         });

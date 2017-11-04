@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/LinearLayout"
+    android:background="@color/ColorSplashBackground"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.dfrank.cryptocurrency.controller.MainActivity"

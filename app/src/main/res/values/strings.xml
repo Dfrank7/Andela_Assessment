@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">CryptoCurrency</string>
     <string name="err_msg_name">Please fill the form</string>
+    <string name="conversion">Conversion</string>
 </resources>

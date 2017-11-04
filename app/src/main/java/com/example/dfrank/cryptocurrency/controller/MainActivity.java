@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toolbar;
 
 import com.example.dfrank.cryptocurrency.R;
 import com.example.dfrank.cryptocurrency.adapter.FraAdapter;
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         TabLayout tabLayout = findViewById(R.id.tab);
         ViewPager viewPager = findViewById(R.id.viewPager);
+//        android.support.v7.widget.Toolbar toolbar =findViewById(R.id.toolbar);
+//        toolbar.setTitle(R.string.app_name);
         prepareData();
         FraAdapter nAdapter = new FraAdapter(getSupportFragmentManager(), fragments, texts);
        viewPager.setAdapter(nAdapter);

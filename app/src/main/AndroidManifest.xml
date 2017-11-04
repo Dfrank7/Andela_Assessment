@@ -18,9 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controller.MainActivity">
+        <activity android:name=".controller.MainActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar">
         </activity>
-        <activity android:name=".controller.ConversionActivity">
+        <activity android:name=".controller.ConversionActivity"
+            android:label="@string/conversion">
         </activity>
     </application>
 
