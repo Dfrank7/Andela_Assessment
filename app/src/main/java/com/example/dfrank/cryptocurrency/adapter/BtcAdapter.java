@@ -36,7 +36,7 @@ public class BtcAdapter extends RecyclerView.Adapter<BtcAdapter.viewHolder> {
     public void onBindViewHolder(BtcAdapter.viewHolder holder, int position) {
         holder.country.setText("Country: "+names.get(position).getCname());
         holder.currency.setText("Shortcode: "+names.get(position).getScode());
-        holder.btc.setText("1 value : "+String.valueOf(names.get(position).getCurrency()));
+        holder.btc.setText("1 value of cryptocurrency : "+String.valueOf(names.get(position).getCurrency()));
 
 
     }

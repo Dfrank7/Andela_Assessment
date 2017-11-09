@@ -2,4 +2,6 @@
     <string name="app_name">CryptoCurrency</string>
     <string name="err_msg_name">Please fill the form</string>
     <string name="conversion">Conversion</string>
+    <string name="hint">Enter cryptocurrency value to convert to base currency</string>
+    <string name="hint1">Enter base currency value to convert to cryptocurrency</string>
 </resources>

@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void prepareData() {
         addData(new BtcFragment(), "Bitcoin");
-        addData(new EthFragment(),"Etherum");
+        addData(new EthFragment(),"Ethereum");
 
     }
 }

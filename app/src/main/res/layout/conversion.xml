@@ -5,8 +5,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="?attr/actionBarSize">
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@drawable/conversion"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/text_input_layout"
@@ -17,8 +29,9 @@
                 android:id="@+id/editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter value to convert"
-                android:textColor="@color/colorPrimary"
+                android:hint="@string/hint"
+                android:textColor="@color/black"
+                android:textStyle="bold"
                 android:inputType="numberDecimal"/>
         </android.support.design.widget.TextInputLayout>
 
@@ -41,6 +54,49 @@
                 android:layout_height="70dp"
                 android:textAlignment="center"
                 android:id="@+id/answer"
+                android:textColor="@color/black"
+                android:textSize="50dp"
+                android:gravity="center"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textStyle="bold"/>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/text_input_layout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/editText1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint1"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:inputType="numberDecimal"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/submit1"
+            android:textColor="@color/colorPrimary"
+            android:layout_gravity="center"
+            android:text="Convert"
+            />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cardView1"
+            android:visibility="invisible">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:id="@+id/answer1"
                 android:textSize="50dp"
                 android:gravity="center"
                 android:textAppearance="?android:textAppearanceMedium"
@@ -49,5 +105,6 @@
         </android.support.v7.widget.CardView>
 
     </LinearLayout>
+
 
 </android.support.design.widget.CoordinatorLayout>

@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -48,7 +49,7 @@ public class BtcFragment extends android.support.v4.app.Fragment {
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                 recyclerView.smoothScrollToPosition(0);
                 Extras();
             }
@@ -61,7 +62,7 @@ public class BtcFragment extends android.support.v4.app.Fragment {
         progressDialog.setMessage("Fetching Data");
         progressDialog.setCancelable(false);
         progressDialog.show();
-        recyclerView.setLayoutManager(new GridLayoutManager(context, 2));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));;
         recyclerView.smoothScrollToPosition(0);
         Extras();
     }
